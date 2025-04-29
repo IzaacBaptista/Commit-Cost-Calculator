@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
     <body>
-        <div class="container">
+        <div class="container" id="commitContainer">
             <h1>💰 Commit Cost Calculator</h1>
             <form id="commitForm">
             <label>Link do Seu Perfil do GitHub:
@@ -25,6 +25,11 @@
                 Ver no GitHub
             </a>
         </div>
+
+        <div id="loadingMessage" class="hidden">
+            <p id="messageText">Calculando custo... ⏳</p>
+        </div>
+
         <!-- Modal de Pix -->
         <div id="pixModal" class="modal">
             <div class="modal-content">
@@ -38,7 +43,36 @@
         <script>
             document.getElementById('commitForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-                window.location.href = "troll.html";
+
+                document.getElementById('commitContainer').classList.add('hidden');
+                document.getElementById('loadingMessage').classList.remove('hidden');
+                
+                let messageElement = document.getElementById('messageText');
+                let messages = [
+                    "Calculando custo... ⏳",
+                    "Analisando perfil do GitHub... 🔍",
+                    "Verificando commits... 🧐",
+                    "Calculando impacto ambiental do commit... 🌱",
+                    "Estatísticas de produtividade... 📊",
+                    "Consultando o algoritmo secreto... 🤖",
+                    "O custo real é... 💸"
+                ];
+
+                let index = 0;
+
+                function showNextMessage() {
+                    if (index < messages.length) {
+                        messageElement.textContent = messages[index];
+                        index++;
+                        setTimeout(showNextMessage, 1500);
+                    } else {
+                        setTimeout(function() {
+                            window.location.href = "troll.html";
+                        }, 1000);
+                    }
+                }
+
+                showNextMessage();
             });
           
             // Modal Pix
@@ -60,7 +94,6 @@
                 modal.style.display = "none";
               }
             });
-          </script>
-          
+        </script>
     </body>
 </html>

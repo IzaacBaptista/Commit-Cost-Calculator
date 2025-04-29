@@ -153,4 +153,19 @@ body {
     cursor: pointer;
   }
   
+  .hidden {
+    display: none;
+  }
   
+  #loadingMessage {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  #trollMessage {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ff6347;
+    margin-top: 20px;
+  }
