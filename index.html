@@ -11,7 +11,13 @@
             <h1>💰 Commit Cost Calculator</h1>
             <form id="commitForm">
             <label>Link do Seu Perfil do GitHub:
-                <input type="text" required />
+                <input type="text" id="githubLink" required placeholder="https://github.com/seunome" />
+            </label>
+            <label>Moeda:
+                <select id="currencySelect">
+                <option value="real">Real (R$)</option>
+                <option value="dollar">Dollar (US$)</option>
+                </select>
             </label>
             <button type="submit">Calcular custo</button>
             </form>
@@ -44,22 +50,25 @@
             document.getElementById('commitForm').addEventListener('submit', function (e) {
                 e.preventDefault();
 
+            const githubLink = document.getElementById('githubLink').value.trim();
+            const currency = document.getElementById('currencySelect').value;
+            const username = extractUsername(githubLink);
+
                 document.getElementById('commitContainer').classList.add('hidden');
                 document.getElementById('loadingMessage').classList.remove('hidden');
-                
+            
                 let messageElement = document.getElementById('messageText');
                 let messages = [
-                    "Calculando custo... ⏳",
-                    "Analisando perfil do GitHub... 🔍",
-                    "Verificando commits... 🧐",
-                    "Calculando impacto ambiental do commit... 🌱",
-                    "Estatísticas de produtividade... 📊",
-                    "Consultando o algoritmo secreto... 🤖",
-                    "O custo real é... 💸"
+                    `Calculando custo... ⏳`,
+                    `Analisando perfil do GitHub... 🔍`,
+                    `Verificando commits do usuário... 🧐`,
+                    `Calculando impacto ambiental do commit... 🌱`,
+                    `Estatísticas de produtividade... 📊`,
+                    `Consultando o algoritmo secreto (${currency === 'real' ? 'R$' : 'US$'})... 🤖`,
+                    `O custo dos seus commit ${username} é... 💸`
                 ];
 
                 let index = 0;
-
                 function showNextMessage() {
                     if (index < messages.length) {
                         messageElement.textContent = messages[index];
@@ -72,14 +81,23 @@
                     }
                 }
 
-                showNextMessage();
+            showNextMessage();
             });
-          
+
+            function extractUsername(link) {
+                try {
+                    const url = new URL(link);
+                    return url.pathname.replace('/', '') || 'dev misterioso';
+                } catch {
+                    return 'dev misterioso';
+                }
+            }
+
             // Modal Pix
             const modal = document.getElementById("pixModal");
             const pixBtn = document.querySelector(".button.payme");
             const closeBtn = document.querySelector(".close");
-          
+
             pixBtn.addEventListener("click", function (e) {
               e.preventDefault();
               modal.style.display = "flex";
