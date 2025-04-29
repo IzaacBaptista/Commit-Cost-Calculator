@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .troll-container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .troll-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
