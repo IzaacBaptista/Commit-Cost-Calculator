@@ -6,31 +6,61 @@
   <title>Commit Cost Calculator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <h1>💰 Commit Cost Calculator</h1>
-    <form id="commitForm">
-      <label>Nome do dev:
-        <input type="text" required />
-      </label>
-      <label>Número de commits:
-        <input type="number" required />
-      </label>
-      <label>Tempo médio por commit (min):
-        <input type="number" required />
-      </label>
-      <label>Salário por hora (R$):
-        <input type="number" required />
-      </label>
-      <button type="submit">Calcular custo</button>
-    </form>
-  </div>
+    <body>
+        <div class="container">
+            <h1>💰 Commit Cost Calculator</h1>
+            <form id="commitForm">
+            <label>Link do Seu Perfil do GitHub:
+                <input type="text" required />
+            </label>
+            <button type="submit">Calcular custo</button>
+            </form>
+        </div>  
+        <div class="support">
+            <a href="" target="_blank" class="button payme" title="Apoie o projeto">
+                💰
+            </a>      
+            <a href="https://github.com/IzaacBaptista/Commit-Cost-Calculator" target="_blank" class="github-link">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" />
+                Ver no GitHub
+            </a>
+        </div>
+        <!-- Modal de Pix -->
+        <div id="pixModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Apoie o projeto</h2>
+            <p>Escaneie com seu app bancário:</p>
+            <img src="img/pix.jpeg" alt="QR Code Pix" class="pix-img" />
+            </div>
+        </div>
 
-  <script>
-    document.getElementById('commitForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      window.location.href = "troll.html";
-    });
-  </script>
-</body>
+        <script>
+            document.getElementById('commitForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                window.location.href = "troll.html";
+            });
+          
+            // Modal Pix
+            const modal = document.getElementById("pixModal");
+            const pixBtn = document.querySelector(".button.payme");
+            const closeBtn = document.querySelector(".close");
+          
+            pixBtn.addEventListener("click", function (e) {
+              e.preventDefault();
+              modal.style.display = "flex";
+            });
+          
+            closeBtn.addEventListener("click", function () {
+              modal.style.display = "none";
+            });
+          
+            window.addEventListener("click", function (event) {
+              if (event.target === modal) {
+                modal.style.display = "none";
+              }
+            });
+          </script>
+          
+    </body>
 </html>

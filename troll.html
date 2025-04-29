@@ -6,10 +6,49 @@
   <title>Resultado</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="troll-container">
-    <img src="img/troll-meme.jpg" alt="Vai trabalhar!" />
-    <h2>Vai trabalhar, tá com tempo né?</h2>
-  </div>
-</body>
+    <body>
+        <div class="troll-container">
+            <img src="img/troll-meme.jpg" alt="Vai trabalhar!" />
+            <h2>Vai trabalhar, tá com tempo né?</h2>
+        </div>
+        <div class="support">
+            <a href="" target="_blank" class="button payme" title="Apoie o projeto">
+                💰
+            </a>      
+            <a href="https://github.com/IzaacBaptista/Commit-Cost-Calculator" target="_blank" class="github-link">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" />
+                Ver no GitHub
+            </a>
+        </div>
+        <!-- Modal de Pix -->
+        <div id="pixModal" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Apoie o projeto</h2>
+            <p>Escaneie com seu app bancário:</p>
+            <img src="img/pix.jpeg" alt="QR Code Pix" class="pix-img" />
+            </div>
+        </div>
+        <script>
+            // Modal Pix
+            const modal = document.getElementById("pixModal");
+            const pixBtn = document.querySelector(".button.payme");
+            const closeBtn = document.querySelector(".close");
+            
+            pixBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                modal.style.display = "flex";
+            });
+            
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+            
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                modal.style.display = "none";
+                }
+            });
+        </script>
+    </body>
 </html>
